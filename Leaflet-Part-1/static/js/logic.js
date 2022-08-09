@@ -58,12 +58,28 @@ function createFeatures(earthquakeData) {
 
     }
 
+    function depthColor(depth) {
+        if (depth < 10) {
+            color = "#a3f600";
+        } else if (depth < 30) {
+            color = "#dcf400";
+        } else if (depth < 50) {
+            color = "#f7db11";
+        } else if (depth < 70) {
+            color = "#fdb72a";
+        } else if (depth < 90) {
+            color = "#fca35e";
+        } else {
+            color = "#ff5f65";
+        };
+        return color;
+    }
     var earthquakes = L.geoJSON(earthquakeData, {
         onEachFeature: onEachFeature,
         pointToLayer: function(feature, latlng) {
             return L.circleMarker(latlng, {
-                radius: parseFloat(feature.geometry.coordinates[2]),
-                fillColor: "blue",
+                radius: parseFloat(feature.properties.mag) * 5,
+                fillColor: depthColor(feature.geometry.coordinates[2]),
                 color: "#000",
                 weight: 1,
                 opacity: 2,
@@ -102,7 +118,7 @@ function createMap(earthquakes) {
         center: [
             37.09, -95.71
         ],
-        zoom: 5,
+        zoom: 4,
         layers: [street, earthquakes]
     });
 
