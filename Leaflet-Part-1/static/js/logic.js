@@ -95,7 +95,7 @@ function createMarkers(data) {
         //in addition to adding pop-up info on each marker, the code below edits each marker depending on each earthquake's magnitude and depth
         pointToLayer: function(feature, latlng) {
             return L.circleMarker(latlng, {
-                radius: parseFloat(feature.properties.mag) * 5,
+                radius: parseFloat(feature.properties.mag) * 4,
                 fillColor: color(feature.geometry.coordinates[2]),
                 color: "#000",
                 weight: 1,
