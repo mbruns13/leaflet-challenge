@@ -45,6 +45,7 @@ function createMap(earthquakes) {
 
     legend.onAdd = function(map) {
         var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Earthquake Depth</h4>";
         div.innerHTML += '<i style="background: #a3f600"></i><span>-10-10</span><br>';
         div.innerHTML += '<i style="background: #dcf400"></i><span>10-30</span><br>';
         div.innerHTML += '<i style="background: #f7db11"></i><span>30-50</span><br>';
